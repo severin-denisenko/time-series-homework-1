@@ -23,14 +23,8 @@ namespace fft{
         if (!is_power_of_tho(n)){
             throw std::runtime_error("Can't perform fast Furrier transform on time series length not power of tho");
         }
-        double n_inverse_sqrt = 1 / sqrt((double) n);
 
         recursive_fft(input, result, forward);
-
-        for (uint32_t i = 0; i < n; ++i)
-        {
-            result.at(i) *= n_inverse_sqrt;
-        }
     }
 
     void iterative_dft(const series& input, series& result, bool forward)
